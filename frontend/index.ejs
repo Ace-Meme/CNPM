@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./stylee.css">
+    <title>Dashboard Sidebar</title>
+    <script src="ejs.js"></script>
+</head>
+<body>
+    <script>
+        var data = {users};
+        print("wtf", data);
+        function act(){
+            document.getElementById("testa").innerHTML += "1";
+        }
+        function filter(){
+            document.getElementById("testa").innerHTML += "x";
+            document.getElementById("testa").innerHTML += data[0].name;
+            
+            /*
+                print("we got", value);
+                const pattern = new RegExp(value, "i");
+                for(let i=0; i<data.length; i++){
+                    if(pattern.test(data[i][field])) {
+                        document.getElementById("collection").innerHTML += `
+                    <tr>
+        <td>0</td>
+        <td>Phạm Hữu Lầu</td>
+        <td>lau@gmail.com</td>
+        
+        <td>H6-Printer2</td>
+        <td>12:33 23/11/2014 Vietnam timezone blablabla wtf</td>
+        <td>3</td>
+    </tr>
+                        `;
+                    }
+                }
+            */
+        }
+        const func = {
+            filter: filter
+        }
+    </script>
+    <p >heloo</p>
+    <div class="main">
+        <div class="menu">
+            <ul>
+                <li><a href="#" id="testa">Nguyễn Anh Quân</a></li>
+                <li><a href="#">NGÔN NGỮ</a></li>
+                <li><a href="#">CÀI ĐẶT</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="sidebar">
+        <div class="logo_content">
+            <div class="logo">
+                <!-- <i class="bx bxl-html5"></i> -->
+                <div class="logo_name">HCMUT-SPSS</div>
+            </div>
+            <i class="bx bx-menu" id="btn"></i>
+        </div>
+        
+        <ul class="nav_list">
+            <!-- <li>
+                <i class="bx bx-search"></i>
+                <input type="text" placeholder="Search...">
+                <span class="tooltip">Search</span>
+            </li> -->
+            <li>
+                <a href="#">
+                    <i class="bx bx-printer" id="btn1"></i>
+                    <span class="links_name">Dịch vụ in ấn</span>
+                </a>
+                    <span class="tooltip">Dịch vụ in ấn</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bx bx-history" id="btn2"></i>
+                    <span class="links_name">Xem lịch sử in ấn</span>
+                </a>
+                    <span class="tooltip">Xem lịch sử in ấn</span>
+            </li>
+            <!-- <li>
+                <a href="#">
+                    <i class="bx bx-compass"></i>
+                    <span class="links_name">Explore</span>
+                </a>
+                    <span class="tooltip">Explore</span>
+            </li> -->
+            <!-- <li>
+                <a href="#">
+                    <i class="bx bx-movie-play"></i>
+                    <span class="links_name">Library</span>
+                </a>
+                    <span class="tooltip">Library</span>
+            </li> -->
+            <!-- <li>
+                <a href="#">
+                    <i class="bx bx-folder"></i>
+                    <span class="links_name">File Manager</span>
+                </a>
+                    <span class="tooltip">File Manager</span>
+            </li> -->
+            <!-- <li>
+                <a href="#">
+                    <i class="bx bx-cart-alt"></i>
+                    <span class="links_name">Order</span>
+                </a>
+                    <span class="tooltip">Order</span>
+            </li> -->
+            <!-- <li>
+                <a href="#">
+                    <i class="bx bx-heart"></i>
+                    <span class="links_name">Saved</span>
+                </a>
+                    <span class="tooltip">Saved</span>
+            </li> -->
+            <!-- <li>
+                <a href="#">
+                    <i class="bx bx-cog"></i>
+                    <span class="links_name">Setting</span>
+                </a>
+                    <span class="tooltip">Setting</span>
+            </li> -->
+        </ul>
+
+        <!-- <div class="profile_content">
+            <div class="profile">
+                <div class="profile_details">
+                    <img src="./img/profile.jpg" alt="">
+                    <div class="name_job">
+                        <div class="name">Cabeo</div>
+                        <div class="job">Web Developer</div>
+                    </div>
+                </div>
+                <i class="bx bx-log-out" id="log_out"></i>
+            </div>
+        </div> -->
+    </div>
+    <div class="home_content">
+        
+        <input type="text" oninput="act()">
+        <form id="form_filter" action="/" method="POST" class="data-in">
+            <div>
+                <label for="name">Tên Sinh Viên</label>
+                <input type="text" id="name" class="uppercase" name="name" placeholder="Tên" oninput="filter()">
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" placeholder="Email">
+            </div>
+            <div>
+                <label for="daystart">Ngày bắt đầu</label>
+                <input type="date" id="daystart" name="daystart">
+            </div>
+            <div>
+                <label for="dayend">Ngày kết thúc</label>
+                <input type="date" id="dayend" name="dayend">
+            </div>
+            <div>
+                <label for="printer">Máy in</label>
+                <input type="text" id="printer" class="uppercase" name="printer" placeholder="Máy in">
+            </div>
+            <div>
+                <label for="pages">Số trang in</label>
+                <input type="text" id="pages" name="pages" placeholder="Số trang in">
+            </div>
+            <input type="submit" name="Apply" placeholder="Apply">
+        </form>
+        <main class="table">
+            <section class="table_head">
+                <h1>BẢNG LỊCH SỬ IN</h1>
+            </section>
+            <section class="table_body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên Sinh Viên</th>
+                            <th>Email</th>
+                            
+                            <th>Máy in</th>
+                            <th>Thời gian in</th>
+                            <th>Số trang</th>
+                        </tr>
+                    </thead>
+                    <tbody id="collection">
+                        <!--
+                        <tr>
+                            <% let stt = 0; %>
+                            <td><%= stt+=1 %></td>
+                            <td>Phạm Hữu Lầu</td>
+                            <td>lau@gmail.com</td>
+                            
+                            <td>H6-Printer2</td>
+                            <td>12:33 23/11/2014 Vietnam timezone blablabla wtf</td>
+                            <td>3</td>
+                        </tr>
+                        -->
+                        
+                            <% for (let i=0; i < users.length; i++) { %>
+                            <tr>
+                                <td><%= stt+=1 %></td>
+                                <td><%= users[i].name %></td>
+                                <td><%= users[i].email %></td>
+                                
+                                <td><%= users[i].printer %></td>
+                                <td><%= users[i].day %></td>
+                                <td><%= users[i].pages %></td>
+                            </tr>
+                            <% } %>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        let btn = document.querySelector("#btn");
+        let sidebar = document.querySelector(".sidebar");
+        // let searchBtn = document.querySelector(".bx-search");
+
+        btn.onclick = function(){
+            sidebar.classList.toggle("active");
+            }
+        // searchBtn.onclick = function(){
+        //     sidebar.classList.toggle("active");
+        // }
+    </script>
+</body>
+</html>

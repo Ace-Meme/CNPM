@@ -1,0 +1,78 @@
+/*
+color:
+*/
+
+*{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.container{
+
+  display: block ;
+}
+.navbar{
+    position: sticky;
+    top: 40px;
+    left: 0;
+    bottom: 0;
+    width: 240px;
+    height: 100vh;
+    padding: 0 1.7rem;
+    overflow: hidden;
+    transition: all 0.5 linear;
+    color:white;
+    background-color: rgba(101, 101, 255, 0.266);
+}
+.menu{
+    background-color: blueviolet;
+    height: 88%;
+    position: relative;
+    list-style: none;
+    padding: 0;
+}
+.menu li{
+    padding: 1rem;
+    margin: 8px;
+    border-radius: 8px;
+    transition: all 0.5s ease-in-out;
+}
+.menu li:hover, .active{
+    background-color: #e0e0e058;
+}
+.menu a{
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap:  1.5rem;
+}
+.title{
+    color: white;
+    background-color: rgb(100, 237, 134);
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-left: 5%;
+}
+.data{
+    background-color: rgb(204, 204, 204);
+    left: 20%;
+}
+.history{
+    background-color: rgb(255, 239, 239);
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 300px;
+}
+.data-in input, .data-in label{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.filter-wrapper{
+    margin-left: 300px;
+    background-color: aliceblue;
+    margin-top: 20px;
+} 

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View history</title>
+    <link rel="stylesheet" href="mystyle.css" />
+    
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <h5>HCMUT-SPSS</h5>
+        </div>
+        <nav class="navbar">
+            <ul class="menu">
+                <li>
+                    <a href="#">
+                        <i class="fas fa-user"></i>
+                        <span class="nav-item">Home</span>
+                    </a>   
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-sign-out-alt"></i>
+                        <span class="nav-item">View history</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <section class="filter-wrapper">
+            <div class="filter">
+                <form id="form_filter" action="/applyfilter" method="POST" class="data-in">
+                    <div>
+                        <label for="name">Tên sinh viên</label>
+                        <input type="text" id="name" name="name" placeholder="Tên">
+                    </div>
+                    <div>
+                        <label for="daystart">Ngày bắt đầu</label>
+                        <input type="date" id="daystart" name="daystart">
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="text" id="email" name="email" placeholder="Email">
+                    </div>
+                    
+                    <label for="dayend">Ngày kết thúc</label>
+                    <input type="date" id="dayend" name="dayend">
+                    <label for="printer">Máy in</label>
+                    <input type="text" id="printer" name="printer" placeholder="Máy in">
+                    <label for="pages">Số trang in</label>
+                    <input type="text" id="pages" name="pages" placeholder="Số trang">
+                    <input type="submit" name="Apply" placeholder="Apply">
+                </form>
+            </div>
+        </section>
+        
+        <div class="data">
+            <table class="history">
+                <tr>
+                    <th>STT</th>
+                    <th>Tên</th>
+                    <th>Email</th>
+                    <th>Ngày in</th>
+                    <th>Máy in</th>
+                    <th>Số trang</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
