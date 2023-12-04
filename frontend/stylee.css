@@ -13,13 +13,16 @@ body {
 }
 
 .menu{
-    width: 1200px;
-    height: 75px;
+    width: 1234px;
+    height: 60px;
     margin: auto;
+    padding-right: 30px;
+    background: linear-gradient(rgb(204, 192, 255),#e0e4fc) ;
+
 }
 
 .menu ul{
-    float: left;
+    float: right;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,9 +30,10 @@ body {
 
 .menu ul li{
     list-style: none;
-    margin-left: 62px;
-    margin-top: 27px;
-    font-size: 17px;
+    margin-left: 70px;
+    margin-top: 17px;
+    font-size: 15px;
+
 }
 
 
@@ -42,17 +46,17 @@ body {
 }
 
 .menu ul li a:hover{
-    color: #ff78c5;
+    color: #002aff;
 
 }
 
 .sidebar {
   position: fixed;
-  width: 78px;
+  width: 78px; 
   height: 100%;
   top: 0;
   left: 0;
-  background: linear-gradient(to top right, #ffc2e9, #e6f1ff);
+  background: linear-gradient(to top right, rgb(204, 192, 255), rgb(230, 236, 255));
   padding: 6px 14px;
   transition: all 0.5s ease;
 }
@@ -295,8 +299,8 @@ body {
     box-sizing: border-box;
     font-family: sans-serif;
     width: auto;
-    height: auto;
-    background-color: #fce0f0;
+    height:auto;
+    background-color: #e0e4fc;
     margin: .8rem auto;
     border-radius: .4rem;
 }
@@ -304,9 +308,10 @@ body {
 .table_head {
     margin: 0;
     padding: 0;
+    text-align: center;
     width: 100%;
-    height: 12%;
-    background-color: #f8bfdf;
+    height: 17%;
+    background-color: #a4b1fc;
     padding: .8rem 1rem;
     box-sizing: border-box;
     font-family: sans-serif;
@@ -314,10 +319,10 @@ body {
 }
 
 .table {
-    width: 72vw;
-    height: 80vh;
+    width: 90%;
+    height: 65%;
     backdrop-filter: blur(7px);
-    box-shadow: 0 .4rem .8rem #faecf4;
+    box-shadow: 0 .4rem .8rem #e0e4fc;
     border-radius: .4rem;
     overflow: auto;
     padding-left: 10rem;
@@ -331,12 +336,17 @@ table, th, td {
 
 thead th {
     position: sticky;
-    top: 0;
-    left: 0;
-    background-color: #d5a2c3;
+    top: 10;
+    left: 10;
+    background-color: #afbbff;
 }
 
 tbody tr:nth-child(even){
-    background-color: rgba(0, 0, 0, 0.08);
+    background-color: rgba(0, 0, 0, 0.119);
 }
 
+.blank_sentense {
+  text-align:right;
+  padding-top: 20px;
+  padding-right: 10px;
+}

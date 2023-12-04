@@ -10,47 +10,19 @@
     <script src="ejs.js"></script>
 </head>
 <body>
-    <script>
-        var data = {users};
-        print("wtf", data);
-        function act(){
-            document.getElementById("testa").innerHTML += "1";
-        }
-        function filter(){
-            document.getElementById("testa").innerHTML += "x";
-            document.getElementById("testa").innerHTML += data[0].name;
-            
-            /*
-                print("we got", value);
-                const pattern = new RegExp(value, "i");
-                for(let i=0; i<data.length; i++){
-                    if(pattern.test(data[i][field])) {
-                        document.getElementById("collection").innerHTML += `
-                    <tr>
-        <td>0</td>
-        <td>Phạm Hữu Lầu</td>
-        <td>lau@gmail.com</td>
-        
-        <td>H6-Printer2</td>
-        <td>12:33 23/11/2014 Vietnam timezone blablabla wtf</td>
-        <td>3</td>
-    </tr>
-                        `;
-                    }
-                }
-            */
-        }
-        const func = {
-            filter: filter
-        }
-    </script>
     <p >heloo</p>
     <div class="main">
         <div class="menu">
             <ul>
-                <li><a href="#" id="testa">Nguyễn Anh Quân</a></li>
-                <li><a href="#">NGÔN NGỮ</a></li>
-                <li><a href="#">CÀI ĐẶT</a></li>
+                <li>
+                    <div>
+                        <input type="text" id="search" placeholder="Type to search">
+                        <button onclick="search()">Search</button>
+                    </div>
+                </li>
+                <li><a id="testa">Nguyễn Anh Quân</a></li>
+                <li><a>NGÔN NGỮ</a></li>
+                <li><a>CÀI ĐẶT</a></li>
             </ul>
         </div>
     </div>
@@ -70,14 +42,14 @@
                 <span class="tooltip">Search</span>
             </li> -->
             <li>
-                <a href="#">
+                <a>
                     <i class="bx bx-printer" id="btn1"></i>
                     <span class="links_name">Dịch vụ in ấn</span>
                 </a>
                     <span class="tooltip">Dịch vụ in ấn</span>
             </li>
             <li>
-                <a href="#">
+                <a>
                     <i class="bx bx-history" id="btn2"></i>
                     <span class="links_name">Xem lịch sử in ấn</span>
                 </a>
@@ -142,34 +114,49 @@
     </div>
     <div class="home_content">
         
-        <input type="text" oninput="act()">
-        <form id="form_filter" action="/" method="POST" class="data-in">
+        <div id="form_filter" class="data-in">
+            <!--
+<form action="/" method="POST">
+                <label for="reg">Search</label>
+                <input type="text" id="reg" name="reg">
+                <input type="submit" name="Apply">
+            </form>
+            -->
+            
+            <div>
+                <label for="firstname">Họ Sinh Viên</label>
+                <input type="text" id="firstname" name="name" placeholder="Họ" oninput="filter('firstname',value)" maxlength="20">
+            </div>  
             <div>
                 <label for="name">Tên Sinh Viên</label>
-                <input type="text" id="name" class="uppercase" name="name" placeholder="Tên" oninput="filter()">
+                <input type="text" id="name" name="name" placeholder="Tên" oninput="filter('name',value)" maxlength="10">
             </div>
             <div>
                 <label for="email">Email</label>
-                <input type="text" id="email" name="email" placeholder="Email">
+                <input type="text" id="email" name="email" placeholder="Email" oninput="filter('email',value)" maxlength="50">
             </div>
             <div>
                 <label for="daystart">Ngày bắt đầu</label>
-                <input type="date" id="daystart" name="daystart">
+                <input type="date" id="daystart" name="daystart" oninput="filter('daystart', value)">
             </div>
             <div>
                 <label for="dayend">Ngày kết thúc</label>
-                <input type="date" id="dayend" name="dayend">
+                <input type="date" id="dayend" name="dayend" oninput="filter('dayend', value)">
             </div>
             <div>
                 <label for="printer">Máy in</label>
-                <input type="text" id="printer" class="uppercase" name="printer" placeholder="Máy in">
+                <input type="text" id="printer" class="uppercase" name="printer" placeholder="Máy in" oninput="filter('printer',value)" maxlength="15">
             </div>
             <div>
                 <label for="pages">Số trang in</label>
-                <input type="text" id="pages" name="pages" placeholder="Số trang in">
+                <input type="text" id="pages" name="pages" placeholder="Số trang in" oninput="filter('pages',value)" maxlength="2">
             </div>
-            <input type="submit" name="Apply" placeholder="Apply">
-        </form>
+        </div>
+        <div style="text-align: center;">
+            <p id="a">What</p>
+            <button onclick="sheet(-1)">Before</button>
+            <button onclick="sheet(1)">After</button>
+        </div>
         <main class="table">
             <section class="table_head">
                 <h1>BẢNG LỊCH SỬ IN</h1>
@@ -179,7 +166,8 @@
                     <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Tên Sinh Viên</th>
+                            <th>Họ</th>
+                            <th>Tên</th>
                             <th>Email</th>
                             
                             <th>Máy in</th>
@@ -199,9 +187,7 @@
                             <td>12:33 23/11/2014 Vietnam timezone blablabla wtf</td>
                             <td>3</td>
                         </tr>
-                        -->
-                        
-                            <% for (let i=0; i < users.length; i++) { %>
+                        <% for (let i=0; i < users.length; i++) { %>
                             <tr>
                                 <td><%= stt+=1 %></td>
                                 <td><%= users[i].name %></td>
@@ -212,23 +198,224 @@
                                 <td><%= users[i].pages %></td>
                             </tr>
                             <% } %>
+                        -->
                     </tbody>
                 </table>
             </section>
         </main>
+        <div><h6>Bản quyền thuộc về Nhóm 2 Công Nghệ Phần Mềm - K231</h6></div>
     </div>
-
     <script>
-        let btn = document.querySelector("#btn");
-        let sidebar = document.querySelector(".sidebar");
-        // let searchBtn = document.querySelector(".bx-search");
-
-        btn.onclick = function(){
-            sidebar.classList.toggle("active");
+        let row = document.getElementById("collection");
+        
+        let users= `<%- JSON.stringify(users) %>`;
+        users = JSON.parse(`${users}`);
+        let data_after_search = users;
+        let index = 0;
+        let last_data_display = users;
+        const queryObject = {
+            firstname: "",
+            name: "",
+            email: "",
+            daystart: "",
+            dayend: "",
+            printer: "",
+            pages: -1
+        };
+        function display(users){
+            row.innerHTML = "";
+            if(users.length == 0){
+                document.getElementById("a").innerHTML = "Không có dữ liệu nào phù hợp với tìm kiếm của bạn.";
+                row.innerHTML += `<tr>
+                <td>N/A</td>
+                <td>---------------------</td>
+                <td>-----------</td>
+                <td>-----------------------------------</td>
+                
+                <td>----------</td>
+                <td>---------------------------</td>
+                <td>---</td>
+                </tr>`;
+                return;
             }
-        // searchBtn.onclick = function(){
-        //     sidebar.classList.toggle("active");
-        // }
+            else {
+                document.getElementById("a").innerHTML = `Tổng cộng có ${users.length} hàng dữ liệu. Bạn đang ở trang: ${index + 1}.`;
+            }
+            let num = 0;
+            for(let i=index*20; i<users.length; i++){
+                row.innerHTML += `<tr>
+                <td>${i + 1}</td>
+                <td>${users[i].firstname}</td>
+                <td>${users[i].name}</td>
+                <td>${users[i].email}</td>
+                
+                <td>${users[i].printer}</td>
+                <td>${users[i].day}</td>
+                <td>${users[i].pages}</td>
+                </tr>`;
+                num++;
+                if(num == 20) break;
+            }
+        }
+        function search(){
+            document.getElementById('firstname').value = "";
+            document.getElementById('name').value = "";
+            document.getElementById('email').value = "";
+            document.getElementById('daystart').value = "";
+            document.getElementById('dayend').value = "";
+            document.getElementById('printer').value = "";
+            document.getElementById('pages').value = "";
+            index = 0;
+            let value = document.getElementById('search').value;
+            console.log("vallue: ", value, "hixinchao");
+            if(value == "") {
+                data_after_search = users;
+                display(data_after_search)
+                last_data_display = data_after_search;
+                return;
+            }
+            row.innerHTML = "";
+            data_after_search = [];
+            let result = [];
+            let data = users;
+            const query = new RegExp(value, 'i');
+            //value = value.replace(/[.*+?${}()|[\]\\]/g, "\\$&");
+            //let pattern = new RegExp(`${value}`, "gi");
+            for(let i=0; i<data.length; i++){
+                const date = `${data[i].day} ${data[i].pages}`;
+                if(query.test(data[i].firstname) || query.test(data[i].name) || query.test(data[i].email) || query.test(data[i].printer) || query.test(date)){
+                    data_after_search.push(data[i]);
+                    let row_of_value = {};
+                    row_of_value.name = data[i].name.replace(query, match => `<mark>${match}</mark>`);
+                    row_of_value.firstname = data[i].firstname.replace(query, match => `<mark>${match}</mark>`);
+                    row_of_value.email = data[i].email.replace(query, match => `<mark>${match}</mark>`);
+                    let paeg = `${data[i].pages}`;
+                    row_of_value.pages = paeg.replace(query, match => `<mark>${match}</mark>`);
+                    row_of_value.printer = data[i].printer.replace(query, match => `<mark>${match}</mark>`);
+                    let daeg = `${data[i].day}`;
+                    row_of_value.day = daeg.replace(query, match => `<mark>${match}</mark>`);
+
+                    /*
+                    */
+                    result.push(row_of_value);
+                }
+            }
+            console.log("vallue: ", value, "hixinchao");
+            display(result);
+            last_data_display = data_after_search;
+        }
+
+        function filter(field, value){
+            row.innerHTML = "";
+            index = 0;
+            if(field == "pages" && (value == "" || value === undefined)) queryObject["pages"] = -1;
+            else queryObject[field] = value;
+            if(field == "daystart" || field == "dayend") {
+                if(value != "" && value !== undefined){
+                    let d = new Date(`${value}`);
+                    queryObject[field] = d.valueOf();
+                }
+                else queryObject[field] = "";
+            }
+            let users_after = data_after_search;
+            ///name
+            let val = queryObject.name;
+            if(val != "" && val !== undefined){
+                let query = new RegExp(`\\b${val}`, 'i');
+                //let query = new RegExp(value, "i");
+                let temp = [];
+                for(let i=0; i<users_after.length; i++){
+                    if(query.test(users_after[i].name)){
+                        temp.push(users_after[i]);
+                    }
+                }
+                users_after = temp;
+            }
+            val = queryObject.firstname;
+            if(val != "" && val !== undefined){
+                let query = new RegExp(`\\b${val}`, 'i');
+                //let query = new RegExp(value, "i");
+                let temp = [];
+                for(let i=0; i<users_after.length; i++){
+                    if(query.test(users_after[i].firstname)){
+                        temp.push(users_after[i]);
+                    }
+                }
+                users_after = temp;
+            }
+
+            val = queryObject.email;
+            if(val != "" && val !== undefined){
+                let query = new RegExp(`\\b${val}`, 'i');
+                //let query = new RegExp(value, "i");
+                let temp = [];
+                for(let i=0; i<users_after.length; i++){
+                    if(query.test(users_after[i].email)){
+                        temp.push(users_after[i]);
+                    }
+                }
+                users_after = temp;
+            }
+            console.log("vallue:", queryObject.daystart);
+            if(queryObject.dayend != "" && queryObject.dayend !== undefined){
+                let temp = [];
+                for(let i=0; i<users_after.length; i++){
+                    let d = new Date(`${users_after[i].day}`);
+                    let dval = d.valueOf();
+                    if(dval <= queryObject.dayend){
+                        temp.push(users_after[i]);
+                    }
+                }
+                users_after = temp;
+            }
+
+            if(queryObject.daystart != "" && queryObject.daystart !== undefined){
+                let temp = [];
+                for(let i=0; i<users_after.length; i++){
+                    let d = new Date(`${users_after[i].day}`);
+                    let dval = d.valueOf();
+                    if(dval >= queryObject.daystart){
+                        temp.push(users_after[i]);
+                    }
+                }
+                users_after = temp;
+            }
+            val = queryObject.printer;
+            if(val != "" && val !== undefined){
+                let query = new RegExp(`\\b${val}`, 'i');
+                //let query = new RegExp(value, "i");
+                let temp = [];
+                for(let i=0; i<users_after.length; i++){
+                    if(query.test(users_after[i].printer)){
+                        temp.push(users_after[i]);
+                    }
+                }
+                users_after = temp;
+            }
+
+            val = queryObject.pages;
+            if(val != -1){
+                let temp = [];
+                for(let i=0; i<users_after.length; i++){
+                    if(users_after[i].pages == val){
+                        temp.push(users_after[i]);
+                    }
+                }
+                users_after = temp;
+            }
+            display(users_after);
+            last_data_display = users_after;
+        }
+        function sheet(int){
+            if(index == 0 && int == -1) return;
+            let n = last_data_display.length;
+            
+            if((index+1)*20 >= n && int == 1) return;
+            index += int;
+            display(last_data_display);
+        }
+        display(users);
+
     </script>
 </body>
 </html>
