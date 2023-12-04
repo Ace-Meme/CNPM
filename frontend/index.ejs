@@ -270,11 +270,10 @@
             console.log("vallue: ", value, "hixinchao");
             if(value == "") {
                 data_after_search = users;
-                display(data_after_search)
-                last_data_display = data_after_search;
+                display(data_after_search);
+                last_data_display = users;
                 return;
             }
-            row.innerHTML = "";
             data_after_search = [];
             let result = [];
             let data = users;
@@ -306,16 +305,22 @@
         }
 
         function filter(field, value){
+            console.log(field);
             row.innerHTML = "";
             index = 0;
             if(field == "pages" && (value == "" || value === undefined)) queryObject["pages"] = -1;
             else queryObject[field] = value;
             if(field == "daystart" || field == "dayend") {
-                if(value != "" && value !== undefined){
-                    let d = new Date(`${value}`);
+                console.log("uoa", value);
+                let d = new Date(`${value}`);
+                
+                    
+                if(!isNaN(d.valueOf())){
                     queryObject[field] = d.valueOf();
+                    console.log("field", queryObject[field]);
                 }
                 else queryObject[field] = "";
+                
             }
             let users_after = data_after_search;
             ///name
@@ -357,7 +362,7 @@
                 users_after = temp;
             }
             console.log("vallue:", queryObject.daystart);
-            if(queryObject.dayend != "" && queryObject.dayend !== undefined){
+            if(queryObject.dayend != ""){
                 let temp = [];
                 for(let i=0; i<users_after.length; i++){
                     let d = new Date(`${users_after[i].day}`);
@@ -369,7 +374,7 @@
                 users_after = temp;
             }
 
-            if(queryObject.daystart != "" && queryObject.daystart !== undefined){
+            if(queryObject.daystart != ""){
                 let temp = [];
                 for(let i=0; i<users_after.length; i++){
                     let d = new Date(`${users_after[i].day}`);
